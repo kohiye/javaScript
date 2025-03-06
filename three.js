@@ -147,8 +147,85 @@ function Accumulator(startingValue){
         this.value += a;
     }
 }
+// prototypes
+// 1)
+{
+let animal = {
+    jumps: null
+};
+let rabbit = {
+    __proto__: animal,
+    jumps: true
+};
 
+console.log(rabbit.jumps); // (1) true т.к свойство rabbit.jumps перегружает __proto__.jumps
+delete rabbit.jumps;
+console.log(rabbit.jumps); // (2) null т.к. __proto__.jumps ничем не перегружено
+delete animal.jumps;
+console.log(rabbit.jumps); // (3) undefined т.к. rabbit.jumps и __proto__.jumps оба неопределены
+}
 
+// 2)
+{
+let animal = {
+    eat() {
+        this.full = true;
+    }
+};
+let rabbit = {
+    __proto__: animal
+};
+rabbit.eat(); // rabbit.full = true; animal и rabbit - разные обьекты
+console.log(rabbit.full);
+}
+
+// 3)
+let hamster = {
+    // stomach : [],  --  передовался всем наследующим обьектам
+    eat(food) {
+        this.stomach.push(food);
+    }
+};
+let speedy = {
+    __proto__: hamster,
+    stomach: []
+};
+let lazy = {
+    __proto__: hamster,
+    stomach: []
+};
+speedy.eat("apple");
+console.log(speedy.stomach); // apple
+console.log(lazy.stomach); // apple
+
+// 4)
+{
+String.prototype.size = 14;
+String.prototype.write = stringWrite;
+function stringWrite(){
+    console.log("Size: " + this.size);
+    console.log("Text: " + this.toString());
+}
+let string = "Some string";
+string.write();
+}
+
+// 5)
+{
+function Rabbit() {}
+Rabbit.prototype = {
+    eats: true
+};
+
+let rabbit = new Rabbit();
+
+//Rabbit.prototype = {}; // true ; строка меняет класс Rabbit но не меняет уже созданный обьект rabbit
+//Rabbit.prototype.eats = false; // false ; строка не меняет rabbit но меняет обьект на который ссылается rabbit.__proto__ 
+//delete rabbit.eats; // true ; rabbit.eats не определён
+delete Rabbit.prototype.eats; // undefined ; rabbit.__proto__.eats определён и эта строка его удаляет
+
+console.log(rabbit.eats); // true
+}
 // classes
 // 1)
 {
