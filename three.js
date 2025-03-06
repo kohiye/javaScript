@@ -11,13 +11,15 @@ user.name = "Pete";
 delete user.name;
 
 // 2)
-var myBrowser = {
+{
+var Browser = {
     name : "Microsoft Internet Explorer",
     version : "9.0"
 }
-for(property in myBrowser){
-    console.log(myBrowser[property]);
+for(property in Browser){
+    console.log(Browser[property]);
 }
+
 
 // 3)
 function isEmpty(obj){
@@ -26,8 +28,9 @@ function isEmpty(obj){
     }
     return false;
 }
-console.log(isEmpty(myBrowser))
+console.log(isEmpty(Browser))
 console.log(isEmpty({}))
+}
 
 // 4)
 const const_user = {
@@ -89,6 +92,7 @@ let ladder = {
 ladder.up().up().down().showStep().down().showStep();
 
 // 8)
+{
 function Browser(name, version){
     this.name = name;
     this.version = version;
@@ -99,6 +103,7 @@ function Browser(name, version){
 
 const browser = new Browser("Microsoft Internet Explorer", "9.0");
 browser.aboutBrowser();
+}
 
 // 9)
 function Employee(name, dept, phone, salary){
@@ -143,6 +148,7 @@ function Accumulator(startingValue){
     }
 }
 
+
 // classes
 // 1)
 {
@@ -171,7 +177,7 @@ class Rabbit extends Animal {
         this.created = Date.now();
 }
 }
-let rabbit = new Rabbit("Белый кролик"); // Error: this is not defined
+let rabbit = new Rabbit("Белый кролик");
 console.log(rabbit.name);
 
 // 3)
@@ -217,3 +223,46 @@ clock.start();
 clock.stop();
 
 // 4)
+class Box{
+    constructor(w, v, date, id){
+        this.id = id;
+        this.w = w;
+        this.v = v;
+        this.date = date;
+    }
+}
+class Stock{
+    constructor(){
+        this.stock = [];
+        this.id = 0
+    }
+    add(w, v){
+        this.stock.push(new Box(w, v, new Date().getTime(), this.id++));
+    }
+    getByW(min_w){
+        for(var i=0; i < this.stock.length; ++i){
+            if (min_w <= this.stock[i].w){
+                this.stock.sort((a, b) => a.date - b.date);
+                return this.stock.splice(i, 1)[0].id;
+            }
+        }
+    }
+    getByV(min_v){
+        for(var i=0; i < this.stock.length; ++i){
+            if (min_v <= this.stock[i].v){
+                this.stock.sort((a, b) => a.date - b.date);
+                return this.stock.splice(i, 1)[0].id;
+            }
+        }
+    }
+
+}
+
+const stock = new Stock();
+stock.add(2,2);
+stock.add(4,2);
+stock.add(9,2);
+stock.add(10,2);
+console.log(stock.getByW(9));
+stock.add(4,2);
+console.log(stock.getByW(9));
