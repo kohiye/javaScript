@@ -50,7 +50,15 @@ function solveU(x,y,z){
 }
 
 // 6)
-let coords = [(3, 4), (4,4), (-1, 3), (19, 19)];
+function perimeter(xs, ys){
+    let perimeter = 0;
+    for (var i=0; i < xs.length; ++i){
+        perimeter += Math.sqrt(Math.pow(xs[i] - xs[(i + 1) % xs.length] , 2) + Math.pow(ys[i] - ys[(i+1) % xs.length] , 2));
+    }
+    return perimeter;
+}
+
+console.log("perimeter: " + perimeter([1, 4, 4, 1], [0, 0, 5, 5]));
 
 // 7)
 function rec(n){
