@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>three</title>
+</head>
+<body>
+    <div>Users:</div>
+    <ul>
+        <li>John</li>
+        <li>Pitt</li>
+    </ul>
+    <script>
+        document.getElementsByTagName("div")[0]; // <div>
+        document.getElementsByTagName("ul")[0]; // <ul>
+        let li = document.querySelectorAll("ul li")[1]; // second <li>
+        alert(li.innerHTML);
+    </script>
+</body>
+</html>

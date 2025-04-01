@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B</title>
+</head>
+<body>
+    <script>
+        v1 = prompt("First Vertex : ").split(" ");
+        v2 = prompt("Second Vertex : ").split(" ");
+        point = prompt("Point : ").split(" ");
+        x1 = Number(v1[0]);
+        x2 = Number(v2[0]);
+        y1 = Number(v1[1]);
+        y2 = Number(v2[1]);
+        xp = Number(point[0]);
+        yp = Number(point[1]);
+        inRange = true;
+        if (x1 <= x2){
+            if (xp < x1 || xp > x2)
+                inRange = false;
+        } else {
+            if (xp > x1 || xp < x2)
+                inRange = false;
+        }
+        if (y1 <= y2){
+            if (yp < y1 || yp > y2)
+                inRange = false;
+        } else {
+            if (yp > y1 || yp < y2)
+                inRange = false;
+        }
+        alert(inRange ? "The point is inside the rectangle." : "The point is outside the rectangle.");
+    </script>
+</body>
+</html>
