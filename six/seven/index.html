@@ -1,0 +1,15 @@
+<script>
+    function clear(elem){
+        let node = document.getElementById(elem);
+        while(node.hasChildNodes()){
+            node.removeChild(node.firstChild);
+        }
+    }
+</script>
+<ol id="list">
+    <li>Hello</li>
+    <li>World</li>
+</ol>
+<script>
+    clear("list");
+</script>

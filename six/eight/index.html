@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List creator</title>
+</head>
+<body>
+    <script>
+        n = prompt("Number of elements: ");
+        let body = document.body;
+        const list = document.createElement("ul");
+        body.appendChild(list);
+        while(n > 0){
+            const content = prompt("Entry content: ");
+            const entry = document.createElement("li")
+            entry.innerHTML = content;
+            list.appendChild(entry);
+            --n;
+        }
+    </script>
+</body>
+</html>
