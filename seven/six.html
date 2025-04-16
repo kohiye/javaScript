@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turkichev Ivan</title>
+    <script>
+        function calculateAvg(){
+            let form = document.getElementById("salary");
+            let total = 0
+            for(i=0; i<form.length; ++i){
+                total += Number(form.elements[i].value)
+            }
+            document.getElementById("avg").value = total/form.length
+        }
+    </script>
+</head>
+<body>
+    <form id="salary" onsumbit="calculateAvg()">
+        <label for="jan">Jan </label><input type="text" name="jan" id="jan" value="300"><br>
+        <label for="feb">Feb </label><input type="text" name="feb" id="feb" value="200"><br>
+        <label for="mar">Mar </label><input type="text" name="mar" id="mar" value="500"><br>
+        <label for="apr">Apr </label><input type="text" name="apr" id="apr" value="250"><br>
+        <label for="may">May </label><input type="text" name="may" id="may" value="350"><br>
+        <label for="jun">Jun </label><input type="text" name="jun" id="jun" value="500"><br>
+    </form>
+    <button onclick="calculateAvg()">avg</button>
+    <input type="text" name="avg" id="avg" value="350"><br><br>
+</body>
+</html>

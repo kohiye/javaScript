@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" onmousedown="showPos(event)">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>doc</title>
+</head>
+<body>
+    <p id="pos"></p>
+    <script>
+        function showPos(event){
+            let x = event.clientX;
+            let y = event.clientY;
+            document.getElementById("pos").innerHTML = "Mouse Pos: (" + x + ", " + y + ")";
+        }
+    </script>
+</body>
+</html>
